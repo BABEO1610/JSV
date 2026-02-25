@@ -1,10 +1,18 @@
-import React from 'react';
+import { useState } from 'react';
+import CreatePost from '../../components/Post/CreatePost';
+
 
 function Home() {
+  const [reload, setReload] = useState(0);
+
+  const reloadPosts = () => {
+    setReload((prev) => prev + 1);
+  };
+
   return (
     <div className="home-page">
-      <h1>Home</h1>
-      <p>Welcome to JSV - Your Social Platform</p>
+      <CreatePost onPostCreated={reloadPosts} />
+      
     </div>
   );
 }
