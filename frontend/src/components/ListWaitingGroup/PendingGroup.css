@@ -1,0 +1,72 @@
+/* Bao bọc toàn bộ khối */
+.pending_container {
+    width: 350px; /* Giới hạn độ rộng để nó thành 1 cột bên trái */
+    border: 1px solid #ddd; /* Tạo viền mờ giống thiết kế */
+    border-radius: 12px; /* Bo góc khối */
+    padding: 20px;
+    background-color: #fff;
+    font-family: sans-serif;
+}
+
+.pending_title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Từng hàng (item) chứa nhóm */
+.pending_item {
+    display: flex;
+    align-items: center; /* Căn giữa các thành phần theo chiều dọc */
+    gap: 15px; /* Khoảng cách đều giữa Avatar, Tên và Nút */
+    margin-bottom: 15px;
+}
+
+/* Bỏ margin ở thẻ cuối cùng cho đẹp */
+.pending_item:last-child {
+    margin-bottom: 0;
+}
+
+/* Vòng tròn Avatar */
+.pending_avatar {
+    width: 45px;
+    height: 45px;
+    background-color: #d1d1d1;
+    border-radius: 50%;
+    flex-shrink: 0; /* Không cho phép avatar bị bóp méo khi thu nhỏ */
+}
+
+/* Hộp xám chứa tên nhóm */
+.pending_name_wrapper {
+    flex-grow: 1; /* Chìa khóa: Chiếm TOÀN BỘ không gian thừa ở giữa */
+    background-color: #e5e5e5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.pending_name_text {
+    font-size: 14px;
+    color: #444;
+}
+
+/* Nút Hủy chờ */
+.pending_btn_cancel {
+    background-color: #d1d1d1;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px; /* Bo góc tròn nhiều hơn giống hình vẽ */
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap; /* Không cho chữ bị rớt dòng */
+}
+
+.pending_btn_cancel:hover {
+    background-color: #bcbcbc;
+}

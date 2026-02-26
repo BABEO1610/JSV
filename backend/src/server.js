@@ -2,6 +2,8 @@ const app = require('./app');
 const { connectDB } = require('./config/db');
 require('dotenv').config();
 
+// 1. IMPORT HÀM KẾT NỐI DB VÀO ĐÂY
+
 const PORT = process.env.PORT || 3001;
 
 const startServer = async () => {
