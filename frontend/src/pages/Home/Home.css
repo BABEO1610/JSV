@@ -4,3 +4,248 @@
     align-items: center;
     margin-top: 260px;
 }
+
+.home-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CreatePost fixed at top */
+.create-post-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #f3f4f6;
+  padding: 20px 0;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 800px;
+}
+
+/* Post Card */
+.post-card {
+  background: white;
+  border-radius: 2rem;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Post Header */
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar-container {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(135deg, #CD8C8C, #EAC4C4);
+}
+
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid white;
+  overflow: hidden;
+  background: white;
+}
+
+.avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-info h2 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user-badge {
+  background: rgba(205, 140, 140, 0.1);
+  color: #CD8C8C;
+  font-size: 0.625rem;
+  font-weight: 700;
+  padding: 0.125rem 0.625rem;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.online-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: inline-block;
+}
+
+.post-time {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-top: 0.125rem;
+  display: block;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.star-button:hover {
+  color: #2563eb;
+  transform: scale(1.1);
+}
+
+.star-button:active {
+  transform: scale(0.95);
+}
+
+/* Post Content */
+.post-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #A58080;
+  border-radius: 1.5rem;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.post-media::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: radial-gradient(circle, white 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.post-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+.post-content-text {
+  color: #6b7280;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.post-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+/* Action Buttons */
+.post-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-join {
+  background: #CD8C8C;
+  color: white;
+  border: none;
+  padding: 0.875rem 3rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(205, 140, 140, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-join:hover {
+  background: #B87A7A;
+  transform: translateY(-2px);
+}
+
+.btn-join:active {
+  transform: scale(0.95);
+}
+
+.btn-message {
+  background: #CDA6A6;
+  color: #1f2937;
+  border: none;
+  padding: 0.875rem 3rem;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.btn-message:hover {
+  background: #B89494;
+  transform: translateY(-2px);
+}
+
+.btn-message:active {
+  transform: scale(0.95);
+}
+
+/* Loading & Error states */
+.loading, .error, .no-posts {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
+.error {
+  color: #ef4444;
+}

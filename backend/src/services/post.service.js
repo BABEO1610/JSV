@@ -1,52 +1,31 @@
-const { getPool } = require('../config/db');
+const postModel = require('../models/post.model');
+
+/**
+ * Service - Chứa business logic
+ * Gọi Model để xử lý database
+ */
 
 const createPost = async (content, userId, imageUrl = null) => {
   try {
-    const pool = getPool();
+    // Gọi Model để insert bài viết
+    const statusId = await postModel.insertPost(userId, content, imageUrl);
     
-    // Tính expires_at = created_at + 1 ngày
-    const result = await pool.request()
-      .input('userId', userId)
-      .input('content', content)
-      .input('imageUrl', imageUrl)
-      .query(`
-        INSERT INTO DailyStatus (user_id, content, image_url, created_at, expires_at)
-        VALUES (@userId, @content, @imageUrl, SYSDATETIME(), DATEADD(day, 1, SYSDATETIME()));
-        SELECT SCOPE_IDENTITY() AS status_id;
-      `);
-
-    const statusId = result.recordset[0].status_id;
-
-    // Return the created post
-    const post = await pool.request()
-      .input('statusId', statusId)
-      .query('SELECT * FROM DailyStatus WHERE status_id = @statusId');
-
-    return post.recordset[0];
+    // Lấy bài viết vừa tạo để trả về
+    const post = await postModel.getPostById(statusId);
+    
+    return post;
   } catch (error) {
-    console.error('Error creating post:', error);
+    console.error('Error in createPost service:', error);
     throw error;
   }
 };
 
 const getAllPosts = async (limit = 50) => {
   try {
-    const pool = getPool();
-    
-    const result = await pool.request()
-      .input('limit', limit)
-      .query(`
-        SELECT ds.*, u.username, u.full_name, u.avatar_url
-        FROM DailyStatus ds
-        INNER JOIN Users u ON ds.user_id = u.user_id
-        WHERE ds.expires_at > SYSDATETIME()
-        ORDER BY ds.created_at DESC
-        FETCH NEXT @limit ROWS ONLY
-      `);
-
-    return result.recordset;
+    // Gọi Model để lấy danh sách bài viết
+    return await postModel.getAllPosts(limit);
   } catch (error) {
-    console.error('Error fetching posts:', error);
+    console.error('Error in getAllPosts service:', error);
     throw error;
   }
 };

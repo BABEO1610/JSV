@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useCreatePost from '../../hooks/useCreatePost';
+import './Post.css';
 
 function CreatePost({ onPostCreated }) {
   const [content, setContent] = useState('');

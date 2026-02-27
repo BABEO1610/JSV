@@ -6,6 +6,7 @@
 .main-content {
   padding-top: 80px;
   padding-bottom: 20px;
+  min-height: calc(100vh - 100px);
 }
 
 /* NavMenu Styles */
@@ -50,8 +51,7 @@
   font-weight: bold;
 }
 
-/* Page Styles */
-.home-page,
+/* Page Styles - centered layout */
 .match-page,
 .friends-page,
 .notifications-page {
@@ -60,7 +60,6 @@
   margin: 0 auto;
 }
 
-.home-page h1,
 .match-page h1,
 .friends-page h1,
 .notifications-page h1 {
@@ -68,7 +67,6 @@
   color: #1976d2;
 }
 
-.home-page p,
 .match-page p,
 .friends-page p,
 .notifications-page p {
