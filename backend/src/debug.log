@@ -127,3 +127,173 @@ SyntaxError: Bad escaped character in JSON at position 9 (line 1 column 10)
 [2026-02-28T07:20:29.322Z] GET /api/pending-activities - Body: undefined
 
 [2026-02-28T07:20:29.323Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:43:57.366Z] DELETE /api/pending-activities/50 - Body: undefined
+
+[2026-02-28T07:44:00.771Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:44:00.772Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:44:00.786Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:44:00.788Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:44:07.830Z] POST /api/posts - Body: {"content":"a","imageUrl":"","description":"","location":"","maxParticipants":10,"duration":60}
+
+[2026-02-28T07:44:07.858Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:44:29.119Z] POST /api/posts - Body: {"content":"abc","imageUrl":"","description":"","location":"","maxParticipants":10,"duration":60}
+
+[2026-02-28T07:44:29.163Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:44:53.689Z] POST /api/posts - Body: {"content":"f","imageUrl":"","description":"sdsdsd","location":"ha","maxParticipants":6,"duration":44}
+
+[2026-02-28T07:44:53.714Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:49:16.683Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:49:16.702Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:49:19.137Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:49:19.140Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:49:19.151Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:49:19.153Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:49:20.081Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:49:20.085Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:49:21.111Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:49:21.115Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:49:21.118Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:49:21.124Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:00:35.651Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:00:35.651Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:00:35.675Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:00:35.676Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:04:08.310Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:04:08.312Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:04:08.333Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:04:08.339Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:05:48.904Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:07:33.035Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:08:19.523Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:09:35.131Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:10:56.747Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:12:10.862Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:13:29.136Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:14:35.879Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:14:35.880Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:14:35.892Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:14:35.896Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:14:46.099Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:15:56.137Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:16:56.257Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:17:39.059Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:17:39.059Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:17:39.077Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:17:39.082Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:17:49.055Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:18:40.033Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:19:43.138Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:19:43.139Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:19:43.160Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:19:43.163Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:20:06.252Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:20:06.253Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:20:06.259Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:20:06.260Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:21:20.937Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:21:46.851Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:23:06.112Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:23:37.119Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:23:50.652Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:23:50.654Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:23:50.678Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:23:50.680Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:24:38.834Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:24:38.835Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:24:38.861Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:24:38.867Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:26:58.640Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:26:58.642Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:26:58.678Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:26:58.682Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:29:44.674Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:29:44.676Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:29:44.713Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:29:44.716Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:29:46.409Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:29:46.412Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:29:46.416Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T08:29:46.420Z] GET /api/activities - Body: undefined
+
+[2026-02-28T08:30:38.617Z] POST /api/posts - Body: {"content":"dsdasd","imageUrl":"","description":"ádasda","location":"noi","maxParticipants":12,"duration":120}
+
+[2026-02-28T08:30:38.679Z] GET /api/activities - Body: undefined
