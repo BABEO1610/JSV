@@ -12,14 +12,19 @@ function useCreatePost(onSuccess) {
   // hàm đăng bài
   const createPost = async (content) => {
     // nếu người dùng chưa nhập gì thì thôi
-    if (!content) return;
+    if (!content || !content.title) {
+      setError('Vui lòng nhập tiêu đề');
+      return;
+    }
 
     try {
       setLoading(true);     // bắt đầu đăng bài
       setError(null);       // reset lỗi
 
+      console.log('Sending post data:', content);
       // gọi API đăng bài
-      await postService.createPost(content);
+      const response = await postService.createPost(content);
+      console.log('Post created successfully:', response);
 
       // báo cho Home biết: "đăng xong rồi"
       if (onSuccess) {
@@ -27,7 +32,8 @@ function useCreatePost(onSuccess) {
       }
     } catch (err) {
       // nếu lỗi thì lưu lỗi lại
-      setError('Đăng bài thất bại');
+      console.error('Create post error:', err);
+      setError(err.message || 'Đăng bài thất bại');
     } finally {
       // đăng xong (thành công hay thất bại đều chạy)
       setLoading(false);

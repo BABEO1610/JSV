@@ -1,37 +1,50 @@
-import React, { useState, useEffect } from 'react'; 
-import axios from 'axios'; 
+import React, { useState, useEffect } from 'react';
 import './PendingGroup.css';
 
-const PendingGroups = () => {
+// FIX: nhận reload prop để re-fetch khi có join mới
+const PendingGroups = ({ reload = 0 }) => {
   const [groups, setGroups] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // 1. Lấy dữ liệu khi mở trang (Giữ nguyên)
   useEffect(() => {
-    axios.get('http://localhost:3001/api/pending-activities')
-      .then(response => {
-        setGroups(response.data);
+    setLoading(true);
+    fetch('/api/pending-activities?userId=2')
+      .then(res => res.json())
+      .then(data => {
+        setGroups(Array.isArray(data) ? data : []);
+        setLoading(false);
       })
-      .catch(error => console.error("Lỗi:", error));
-  }, []); 
+      .catch(err => {
+        console.error('Lỗi lấy pending:', err);
+        setLoading(false);
+      });
+  }, [reload]); // FIX: re-fetch khi reload thay đổi
 
-  // 2. HÀM MỚI: Xử lý khi bấm nút "Hủy chờ"
   const handleCancel = (id) => {
-    // Hỏi lại cho chắc chắn (Tùy chọn)
-    if (!window.confirm("Bạn có chắc muốn hủy duyệt hoạt động này?")) return;
+    if (!window.confirm('Bạn có chắc muốn hủy yêu cầu tham gia này?')) return;
 
-    // Gọi API xóa
-    axios.delete(`http://localhost:3001/api/pending-activities/${id}`)
+    // FIX: DELETE /api/pending-activities/:request_id (hủy request, không phải activity)
+    fetch(`/api/pending-activities/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
       .then(() => {
-        // Nếu Backend báo thành công -> Xóa nhóm đó khỏi giao diện React
-        setGroups(groups.filter(group => group.id !== id));
+        setGroups(prev => prev.filter(g => g.id !== id));
       })
-      .catch(error => console.error("Lỗi khi xóa:", error));
+      .catch(err => console.error('Lỗi khi hủy:', err));
   };
+
+  if (loading) {
+    return (
+      <div className="pending_container">
+        <h4 className="pending_title">Danh sách các nhóm đang chờ duyệt</h4>
+        <p style={{ fontSize: '13px', color: '#777', textAlign: 'center' }}>Đang tải...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="pending_container">
       <h4 className="pending_title">Danh sách các nhóm đang chờ duyệt</h4>
-      
+
       {groups.length === 0 ? (
         <p style={{ fontSize: '13px', color: '#777', textAlign: 'center' }}>
           Không có hoạt động nào đang chờ duyệt.
@@ -39,15 +52,16 @@ const PendingGroups = () => {
       ) : (
         groups.map(group => (
           <div key={group.id} className="pending_item">
-            <div className="pending_avatar" />
+            <img
+              src={group.creator_avatar || 'https://i.pravatar.cc/150?img=1'}
+              alt={group.creator_name || 'User'}
+              className="pending_avatar"
+              referrerPolicy="no-referrer"
+            />
             <div className="pending_name_wrapper">
               <span className="pending_name_text">{group.name}</span>
             </div>
-            {/* 3. Gắn hàm handleCancel vào sự kiện onClick */}
-            <button 
-              className="pending_btn_cancel" 
-              onClick={() => handleCancel(group.id)}
-            >
+            <button className="pending_btn_cancel" onClick={() => handleCancel(group.id)}>
               Hủy chờ
             </button>
           </div>
