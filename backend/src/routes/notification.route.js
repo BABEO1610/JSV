@@ -16,9 +16,8 @@ router.get('/', async (req, res) => {
                     notification_id,
                     user_id,
                     type,
-                    title,
+                    ref_id,
                     content,
-                    message,
                     is_read,
                     created_at
                 FROM Notifications

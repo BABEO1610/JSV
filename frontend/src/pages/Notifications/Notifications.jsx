@@ -41,18 +41,24 @@ function Notifications() {
   // Lấy icon theo loại notification
   const getNotificationIcon = (type) => {
     switch (type) {
-      case 'friend_request':
+      case 'join_request':
+        return '🤝';
+      case 'follow':
         return '👤';
-      case 'activity_invite':
+      case 'match_accepted':
+        return '💕';
+      case 'match_request':
+        return '❤️';
+      case 'activity_request':
         return '⚽';
-      case 'activity_join':
-        return '🎉';
+      case 'activity_approved':
+        return '✅';
+      case 'activity_rejected':
+        return '❌';
       case 'message':
         return '💬';
-      case 'like':
-        return '❤️';
-      case 'comment':
-        return '💭';
+      case 'system':
+        return '🔔';
       default:
         return '🔔';
     }
@@ -61,18 +67,24 @@ function Notifications() {
   // Lấy title theo loại notification
   const getNotificationTitle = (notification) => {
     switch (notification.type) {
-      case 'friend_request':
-        return 'Lời mời kết bạn';
-      case 'activity_invite':
-        return 'Mời tham gia hoạt động';
-      case 'activity_join':
-        return 'Người tham gia hoạt động';
+      case 'join_request':
+        return 'Yêu cầu tham gia';
+      case 'follow':
+        return 'Người theo dõi mới';
+      case 'match_accepted':
+        return 'Ghép đôi thành công';
+      case 'match_request':
+        return 'Yêu cầu ghép đôi';
+      case 'activity_request':
+        return 'Yêu cầu tham gia hoạt động';
+      case 'activity_approved':
+        return 'Yêu cầu được chấp nhận';
+      case 'activity_rejected':
+        return 'Yêu cầu bị từ chối';
       case 'message':
         return 'Tin nhắn mới';
-      case 'like':
-        return 'Thích bài viết';
-      case 'comment':
-        return 'Bình luận mới';
+      case 'system':
+        return 'Thông báo hệ thống';
       default:
         return 'Thông báo';
     }
