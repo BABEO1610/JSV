@@ -6,7 +6,9 @@ function MainLayout({ children }) {
     <div className="main-layout">
       <Header />
       <main className="main-content">
-        {children}
+        <div className="container">
+          {children}
+        </div>
       </main>
     </div>
   );

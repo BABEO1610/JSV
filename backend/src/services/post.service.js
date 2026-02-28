@@ -5,13 +5,13 @@ const postModel = require('../models/post.model');
  * Gọi Model để xử lý database
  */
 
-const createPost = async (content, userId, imageUrl = null) => {
+const createPost = async (content, userId, imageUrl = null, additionalData = {}) => {
   try {
-    // Gọi Model để insert bài viết
-    const statusId = await postModel.insertPost(userId, content, imageUrl);
+    // Gọi Model để insert bài viết (Activities table)
+    const activityId = await postModel.insertPost(userId, content, imageUrl, additionalData);
     
     // Lấy bài viết vừa tạo để trả về
-    const post = await postModel.getPostById(statusId);
+    const post = await postModel.getPostById(activityId);
     
     return post;
   } catch (error) {

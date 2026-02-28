@@ -1,0 +1,129 @@
+
+[2026-02-28T06:03:26.556Z] POST /api/posts - Body: {"title":"Test Post","content":"Test Content","location":"Test Location","maxParticipants":10,"duration":60}
+
+[2026-02-28T06:28:18.185Z] POST /api/posts - Body: {"title":"Test Activity CSS","content":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120}
+
+[2026-02-28T06:48:25.321Z] GET /api/activities - Body: undefined
+
+[2026-02-28T06:48:25.348Z] GET /api/activities - Body: undefined
+
+[2026-02-28T06:49:06.766Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T06:49:06.780Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T06:49:11.142Z] GET /api/activities - Body: undefined
+
+[2026-02-28T06:49:11.148Z] GET /api/activities - Body: undefined
+
+[ERROR] Bad escaped character in JSON at position 9 (line 1 column 10)
+SyntaxError: Bad escaped character in JSON at position 9 (line 1 column 10)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\Admin\Documents\GitHub\JSV\backend\node_modules\body-parser\lib\types\json.js:72:19)
+    at C:\Users\Admin\Documents\GitHub\JSV\backend\node_modules\body-parser\lib\read.js:162:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (C:\Users\Admin\Documents\GitHub\JSV\backend\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\Admin\Documents\GitHub\JSV\backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\Admin\Documents\GitHub\JSV\backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:508:28)
+    at endReadableNT (node:internal/streams/readable:1701:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)
+
+[2026-02-28T06:54:52.918Z] POST /api/posts - Body: {"title":"Test Activity","description":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120,"userId":2}
+
+[2026-02-28T06:58:44.431Z] POST /api/posts - Body: {"content":"a","imageUrl":"","description":"","location":"","maxParticipants":10,"duration":60}
+
+[2026-02-28T06:58:56.966Z] POST /api/posts - Body: {"title":"Test Activity","description":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120,"userId":2}
+
+[2026-02-28T07:01:32.983Z] POST /api/posts - Body: {"title":"Test Activity","description":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120,"userId":2}
+
+[2026-02-28T07:02:09.637Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:02:09.651Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:04:16.137Z] POST /api/posts - Body: {"title":"Test Activity","description":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120,"userId":2}
+
+[2026-02-28T07:08:03.895Z] POST /api/posts - Body: {"title":"Test Activity","description":"Test Description","location":"Hanoi","maxParticipants":10,"duration":120,"userId":2}
+
+[2026-02-28T07:08:40.055Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:08:40.068Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:08:41.680Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:41.690Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:46.625Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:46.632Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:47.576Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:47.584Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:47.805Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:47.812Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:48.946Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:48.952Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.166Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.171Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.368Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.374Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.571Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:49.577Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:51.726Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:08:51.732Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:18:08.035Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:18:08.037Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:19:16.388Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:19:16.412Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:19:17.786Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:19:17.787Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:19:17.806Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:19:17.809Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:19:19.066Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:19:19.070Z] GET /api/notifications - Body: undefined
+
+[2026-02-28T07:19:22.962Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:19:22.963Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:19:22.969Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:19:22.970Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:20:14.555Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:20:14.556Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:20:14.581Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:20:14.585Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:20:29.316Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:20:29.317Z] GET /api/activities - Body: undefined
+
+[2026-02-28T07:20:29.322Z] GET /api/pending-activities - Body: undefined
+
+[2026-02-28T07:20:29.323Z] GET /api/activities - Body: undefined

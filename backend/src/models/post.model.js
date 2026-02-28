@@ -1,57 +1,96 @@
 const { getPool } = require('../config/db');
+const sql = require('mssql');
 
-/**
- * Model - Xử lý trực tiếp với database
- * Chỉ chứa các câu lệnh SQL thuần (INSERT, SELECT, UPDATE, DELETE)
- */
-
-// INSERT bài viết vào bảng DailyStatus
-const insertPost = async (userId, content, imageUrl = null) => {
+// INSERT bài viết vào bảng Activities
+// FIX: status 'active' không hợp lệ → dùng 'approved'
+const insertPost = async (userId, content, imageUrl = null, additionalData = {}) => {
   const pool = getPool();
-  
-  const result = await pool.request()
-    .input('userId', userId)
-    .input('content', content)
-    .input('imageUrl', imageUrl)
-    .query(`
-      INSERT INTO DailyStatus (user_id, content, image_url, created_at, expires_at)
-      VALUES (@userId, @content, @imageUrl, SYSDATETIME(), DATEADD(day, 1, SYSDATETIME()));
-      SELECT SCOPE_IDENTITY() AS status_id;
-    `);
+  const { description = '', location = '', maxParticipants = 10, duration = 60 } = additionalData;
 
-  return result.recordset[0].status_id;
+  try {
+    const result = await pool.request()
+      .input('creatorId', sql.Int, userId)
+      .input('title', sql.NVarChar(sql.MAX), content)
+      .input('description', sql.NVarChar(sql.MAX), description)
+      .input('location', sql.NVarChar(100), location)
+      .input('maxParticipants', sql.Int, maxParticipants)
+      .input('duration', sql.Int, duration)
+      .query(`
+        INSERT INTO Activities (creator_id, title, description, location, max_participants, duration_minutes, created_at)
+        VALUES (@creatorId, @title, @description, @location, @maxParticipants, @duration, SYSDATETIME());
+        SELECT SCOPE_IDENTITY() AS activity_id;
+      `);
+
+    const activityId = result.recordset[0].activity_id;
+    console.log('Post created with ID:', activityId);
+    return activityId;
+  } catch (error) {
+    console.error('insertPost error:', error.message);
+    throw error;
+  }
 };
 
 // Lấy bài viết theo ID
-const getPostById = async (statusId) => {
+const getPostById = async (activityId) => {
   const pool = getPool();
-  
-  const result = await pool.request()
-    .input('statusId', statusId)
-    .query('SELECT * FROM DailyStatus WHERE status_id = @statusId');
-
-  return result.recordset[0];
+  try {
+    const result = await pool.request()
+      .input('activityId', sql.Int, activityId)
+      .query(`
+        SELECT 
+          a.activity_id AS status_id,
+          a.creator_id AS user_id,
+          a.title AS content,
+          a.description AS extra_content,
+          a.location,
+          a.max_participants,
+          a.created_at,
+          u.username,
+          u.full_name,
+          u.avatar_url,
+          (SELECT TOP 1 ai.image_url FROM ActivityImages ai WHERE ai.activity_id = a.activity_id) AS image_url
+        FROM Activities a
+        LEFT JOIN Users u ON a.creator_id = u.user_id
+        WHERE a.activity_id = @activityId
+      `);
+    return result.recordset[0];
+  } catch (error) {
+    console.error('getPostById error:', error.message);
+    throw error;
+  }
 };
 
-// Lấy tất cả bài viết (chưa hết hạn)
+// Lấy tất cả bài viết (status = 'approved')
+// FIX: WHERE status = 'approved' thay vì 'active'
 const getAllPosts = async (limit = 50) => {
   const pool = getPool();
-  
-  const result = await pool.request()
-    .input('limit', limit)
-    .query(`
-      SELECT TOP (@limit) ds.*, u.username, u.full_name, u.avatar_url
-      FROM DailyStatus ds
-      INNER JOIN Users u ON ds.user_id = u.user_id
-      WHERE ds.expires_at > SYSDATETIME()
-      ORDER BY ds.created_at DESC
-    `);
-
-  return result.recordset;
+  try {
+    const result = await pool.request()
+      .input('limit', sql.Int, limit)
+      .query(`
+        SELECT TOP (@limit)
+          a.activity_id AS status_id,
+          a.creator_id AS user_id,
+          a.title AS content,
+          a.description AS extra_content,
+          a.location,
+          a.max_participants,
+          a.duration_minutes,
+          a.created_at,
+          u.username,
+          u.full_name,
+          u.avatar_url,
+          (SELECT TOP 1 ai.image_url FROM ActivityImages ai WHERE ai.activity_id = a.activity_id) AS image_url
+        FROM Activities a
+        LEFT JOIN Users u ON a.creator_id = u.user_id
+        WHERE a.status IN ('approved', 'pending', 'active')
+        ORDER BY a.created_at DESC
+      `);
+    return result.recordset;
+  } catch (error) {
+    console.error('getAllPosts error:', error.message);
+    throw error;
+  }
 };
 
-module.exports = {
-  insertPost,
-  getPostById,
-  getAllPosts
-};
+module.exports = { insertPost, getPostById, getAllPosts };
