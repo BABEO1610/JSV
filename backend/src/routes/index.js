@@ -4,6 +4,12 @@ const sql = require('mssql');
 // Import pool kết nối từ file db.js của bạn
 const { getPool } = require('../config/db'); 
 
+// Import notification routes
+const notificationRoutes = require('./notification.route');
+
+// Sử dụng notification routes
+router.use('/notifications', notificationRoutes);
+
 // API Lấy danh sách hoạt động chờ duyệt
 router.get('/pending-activities', async (req, res) => {
     try {

@@ -1,11 +1,24 @@
 // Notification Service - API calls related to notifications
+// Sử dụng userId = 2 cho test (tạm thời chưa có login)
 const API_BASE_URL = '/api';
+const USER_ID = 2; // User ID test
 
 export const notificationService = {
-  // Get all notifications
-  getNotifications: async () => {
+  // Get all notifications cho user hiện tại
+  getNotifications: async (userId = USER_ID) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/notifications`);
+      const response = await fetch(`${API_BASE_URL}/notifications?userId=${userId}`);
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching notifications:', error);
+      throw error;
+    }
+  },
+
+  // Get notifications by user ID
+  getNotificationsByUserId: async (userId) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/notifications?userId=${userId}`);
       return await response.json();
     } catch (error) {
       console.error('Error fetching notifications:', error);
@@ -14,9 +27,9 @@ export const notificationService = {
   },
 
   // Get unread notifications count
-  getUnreadCount: async () => {
+  getUnreadCount: async (userId = USER_ID) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/notifications/unread/count`);
+      const response = await fetch(`${API_BASE_URL}/notifications/unread/count?userId=${userId}`);
       return await response.json();
     } catch (error) {
       console.error('Error fetching unread count:', error);
@@ -41,13 +54,14 @@ export const notificationService = {
   },
 
   // Mark all notifications as read
-  markAllAsRead: async () => {
+  markAllAsRead: async (userId = USER_ID) => {
     try {
       const response = await fetch(`${API_BASE_URL}/notifications/read-all`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ userId }),
       });
       return await response.json();
     } catch (error) {
